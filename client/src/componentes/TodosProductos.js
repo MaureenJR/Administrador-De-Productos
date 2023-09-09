@@ -6,7 +6,7 @@ const TodosProductos = () => {
     const [productos, setProductos] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/productos")
+        axios.get("http://localhost:8000/api/productos/")
             .then(res => {
                 setProductos(res.data)
             })
@@ -45,7 +45,8 @@ const TodosProductos = () => {
                                 <td>{producto.descripcion}</td>
                                 <td>
                                     <Link to={`/producto/${producto._id}`} className="btn btn-primary me-3">Detalle</Link>
-                                    <button className="btn btn-danger" onClick={() => borrarProducto(producto._id)}>Borrar</button>
+                                    <button className="btn btn-danger me-3" onClick={() => borrarProducto(producto._id)}>Borrar</button>
+                                    <Link to= {`/${producto._id}/editar/`} className="btn btn-secondary ms-2">Editar</Link>
                                 </td>
                             </tr>
                         ))
